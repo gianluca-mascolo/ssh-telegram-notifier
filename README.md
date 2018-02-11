@@ -27,7 +27,7 @@ chmod 0755 /etc/ssh/sshrc
 The sshrc can be read by every user on the system, exposing you telegram bot password.
 It will be better if one can have a separate daemon running by a private user that accept an incoming message from sshrc and write to your bot.
 ## Thanks to
-https://github.com/lazyfrosch/icinga2-telegram
-https://metzlog.srcbox.net/2016/01/monitoring-notifications-via-telegram/
+- https://github.com/lazyfrosch/icinga2-telegram
+- https://metzlog.srcbox.net/2016/01/monitoring-notifications-via-telegram/
 ## Follow me!
 Do you like it? Follow me on telegram: http://t.me/linuxcheatsheet
