@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export LANG=C
+TELEGRAM_CHAT_ID="ddddddd"
+TELEGRAM_BOT_TOKEN="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+LOGGED_USER="$(whoami)"
+LOGGED_HOST="$(hostname -f)"
+
+LOGGED_TTY="$(ps -p "$$" -o tname h)"
+LOGGED_IP="$(w -i | grep -w "$LOGGED_TTY" | awk '{print $3}')"
+NOW="$(date)"
+MESSAGE="$(echo -e "<strong>SSH Login Notification</strong>\nHost: $LOGGED_HOST\nUser: $LOGGED_USER\nIP: $LOGGED_IP\nTime: $NOW")"
+
+/usr/bin/curl --silent --output /dev/null \
+    --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+    --data-urlencode "text=${MESSAGE}" \
+    --data-urlencode "parse_mode=HTML" \
+    --data-urlencode "disable_web_page_preview=true" \
+    "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
